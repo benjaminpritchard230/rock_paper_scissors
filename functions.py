@@ -18,20 +18,23 @@ def decide_winner(player, computer):
         else:
             return 'Player wins'
 
-
 def player_choice():
     """Returns the player's choice"""
     acceptable_inputs = ['rock', 'paper', 'scissors']
     while True:
-        player = input('Select rock, paper or scissors:')
+        while True:
+            try:
+                player = str(input('Select rock, paper or scissors:'))
+            except ValueError:
+                print('Please enter a valid input.')
+                continue
+            break
         if player not in acceptable_inputs:
             print('Please enter a valid input.')
             continue
         else:
             break
     return player
-
-
 
 def computer_choice():
     """Returns a random computer choice."""
